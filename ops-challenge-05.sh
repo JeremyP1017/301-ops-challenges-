@@ -22,3 +22,4 @@ zip -q $wtmp_backup_file /var/log/wtmp
 # Print the file size of the compressed files
 echo "Size of compressed syslog file: $(du -h $syslog_backup_file | cut -f1)"
 echo "Size of compressed wtmp file: $(du -h $wtmp_backup_file | cut -f1)"
+# sources google,chatgpt
