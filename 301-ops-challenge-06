@@ -1,0 +1,27 @@
+import os
+
+# Execute the "whoami" command and store the output in a variable
+whoami_output = os.popen("whoami").read().strip()
+
+# Execute the "ip a" command and store the output in a variable
+ip_output = os.popen("ip a").read().strip()
+
+# Execute the "lshw -short" command and store the output in a variable
+lshw_output = os.popen("lshw -short").read().strip()
+
+# Print the output of the "whoami" command
+print("Output of 'whoami' command:")
+print(whoami_output)
+
+# Print the output of the "ip a" command
+print("Output of 'ip a' command:")
+print(ip_output)
+
+# Print the output of the "lshw -short" command
+print("Output of 'lshw -short' command:")
+print(lshw_output)
+
+use the os.popen() function to execute the bash commands and capture their output. The strip() method is used to
+remove any leading or trailing whitespaces from the output. store the output of each command
+in a separate variable and then print the output using the print() function.
+Sources: google,Chatgpt
