@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+# Import libraries
+import os
+
+# Declaration of functions
+def print_directory_contents(directory):
+    for root, dirs, files in os.walk(directory):
+        print(f"Current directory: {root}")
+        print("Subdirectories:")
+        for name in dirs:
+            print(os.path.join(root, name))
+        print("Files:")
+        for name in files:
+            print(os.path.join(root, name))
+
+# Main
+directory = input("Please enter the directory path: ")
+print_directory_contents(directory)
+ 
+ In this script, the print_directory_contents() function takes in a directory path as a parameter and uses os.walk() 
+ to iterate over all directories, sub-directories and files in the directory tree. The os.path.join() function is used to
+ join the directory path with the name of each subdirectory or file. The output is printed to the console.
+ 
+ Sources: google,chatgpt
