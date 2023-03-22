@@ -1,0 +1,11 @@
+my_list = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"]
+
+print(my_list[3]) # print the fourth element of the list
+print(my_list[5:10]) # print the sixth through tenth element of the list
+my_list[6] = "onion" # change the value of the seventh element to "onion"
+print(my_list) # print the updated list
+
+#this script assigns a list of ten string elements to the variable my_list.
+#then use [] to print the fourth element of the list (my_list[3]) and print the sixth through tenth element of the list (my_list[5:10]).
+#change the value of the seventh element to "onion" (my_list[6] = "onion") and print the updated list using print(my_list).
+Sources: Google,Chatgpt
