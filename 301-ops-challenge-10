@@ -1,0 +1,17 @@
+import os
+
+# create a new .txt file and append three lines
+with open("example.txt", "a") as file:
+    file.write("This is line 1.\n")
+    file.write("This is line 2.\n")
+    file.write("This is line 3.\n")
+
+# read the first line and print it to the screen
+with open("example.txt", "r") as file:
+    first_line = file.readline()
+    print(first_line)
+
+# delete the file
+os.remove("example.txt")
+
+Sources:google ,reddit,and chatgpt
