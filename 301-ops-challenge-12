@@ -1,0 +1,56 @@
+import requests
+
+# Prompt the user for the destination URL
+url = input("Enter the destination URL: ")
+
+# Prompt the user for the HTTP method
+method = input("Select a HTTP method (GET, POST, PUT, DELETE, HEAD, PATCH, OPTIONS): ")
+
+# Create the request
+request = requests.Request(method, url).prepare()
+
+# Print the request to the screen
+print(f"Request: {request.method} {request.url}")
+print("Headers:")
+for header in request.headers.items():
+    print(f"{header[0]}: {header[1]}")
+print("Body:")
+print(request.body)
+
+# Ask the user to confirm before sending the request
+confirm = input("Do you want to send this request? (y/n): ")
+if confirm.lower() == "y":
+    # Send the request
+    response = requests.get(url)
+    # Print the response to the screen
+    print(f"Response status code: {response.status_code}")
+    print("Headers:")
+    for header in response.headers.items():
+        print(f"{header[0]}: {header[1]}")
+    print("Body:")
+    print(response.text)
+    
+    # Translate response status code to plain terms
+    if response.status_code == 200:
+        print("Success")
+    elif response.status_code == 400:
+        print("Bad Request")
+    elif response.status_code == 401:
+        print("Unauthorized")
+    elif response.status_code == 403:
+        print("Forbidden")
+    elif response.status_code == 404:
+        print("Site not found")
+    elif response.status_code == 500:
+        print("Internal Server Error")
+    elif response.status_code == 503:
+        print("Service Unavailable")
+else:
+    print("Request cancelled.")
+    
+This script prompts the user for the destination URL and HTTP method, creates the request, prints the request to the screen,
+asks the user to confirm before sending the request, and sends a GET request to the specified URL using the requests library.
+It then prints the response header information to the screen, along with the translated plain terms for the response status code.
+Note that this script assumes that the user enters a valid HTTP method and URL.
+
+sources:google,chatgpt
