@@ -1,0 +1,33 @@
+# Replace these variables with the actual values
+$firstName = "Thor"
+$lastName = "GodOfThunder"
+$jobTitle = "TPS Reporting Lead"
+$department = "TPS Department"
+$office = "Springfield, OR"
+$email = "Thor@GlobeXpower.com"
+$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+
+# Set the distinguished name (DN) of the OU where you want to create the user
+$ouDN = "OU=Employees,DC=globexusa,DC=com"
+
+# Create a new user object
+$newUser = New-Object Microsoft.ActiveDirectory.Management.ADUser
+
+# Set the properties of the user object
+$newUser.Name = "$firstName $lastName"
+$newUser.SamAccountName = $firstName.ToLower() + $lastName.ToLower()
+$newUser.UserPrincipalName = $newUser.SamAccountName + "@globexusa.com"
+$newUser.GivenName = $firstName
+$newUser.Surname = $lastName
+$newUser.DisplayName = "$firstName $lastName"
+$newUser.Title = $jobTitle
+$newUser.Department = $department
+$newUser.Office = $office
+$newUser.EmailAddress = $email
+$newUser.AccountPassword = $password
+$newUser.Enabled = $true
+
+# Create the user in Active Directory
+New-ADUser -Instance $newUser -Path $ouDN -AccountPassword $password -PassThru
+
+Sources:google ,chatgpt
